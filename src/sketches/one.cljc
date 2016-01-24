@@ -1,5 +1,5 @@
-(ns sketches.1
-  (:require [quil.core :as q]))
+(ns sketches.one
+  (:require [quil.core :as q :include-macros true]))
 
 (def size [415 500])
 (def min-line-length 100)
@@ -54,8 +54,7 @@
 
 (q/defsketch sketches
   :title "#1"
+  :host "sketch1"
   :setup setup
   :size size
   :features [:keep-on-top])
-
-(defn -main [& args])

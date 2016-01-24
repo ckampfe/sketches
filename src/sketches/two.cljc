@@ -1,5 +1,5 @@
-(ns sketches.2
-  (:require [quil.core :as q]))
+(ns sketches.two
+  (:require [quil.core :as q :include-macros true]))
 
 (def size [830 1000])
 (def light [0 0 200])
@@ -26,9 +26,9 @@
   (let [r (rand-int 2)
         stroke light
         fill (if (> r 0) light dark)]
-    (q/with-stroke stroke
-      (q/with-fill fill
-        (q/ellipse x y 20 20)))))
+    (apply q/stroke stroke)
+    (apply q/fill fill)
+    (q/ellipse x y 20 20)))
 
 (defn draw [grid]
   (doseq [[x y] grid]
@@ -43,8 +43,7 @@
 
 (q/defsketch sketches
   :title "#2"
+  :host "sketch2"
   :setup setup
   :size size
   :features [:keep-on-top])
-
-(defn -main [& args])

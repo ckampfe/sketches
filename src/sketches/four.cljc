@@ -1,5 +1,5 @@
-(ns sketches.4
-  (:require [quil.core :as q]))
+(ns sketches.four
+  (:require [quil.core :as q :include-macros true]))
 
 (def size [830 1000])
 (def grid-n 5)
@@ -14,13 +14,12 @@
 (defn setup []
   (q/color-mode :hsb 830)
   (doseq [part partitions]
-    (q/with-fill [part part 400]
-      (q/rect part -1 base-width 1000))))
+    (apply q/fill [part part 400])
+    (q/rect part -1 base-width 1000)))
 
 (q/defsketch sketches
   :title "#4"
+  :host "sketch4"
   :setup setup
   :size size
   :features [:keep-on-top])
-
-(defn -main [& args])
