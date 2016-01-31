@@ -1,2 +1,2 @@
 (ns sketches.core
-  (:import [sketches one two three four]))
+  (:import [sketches one two three four five]))
