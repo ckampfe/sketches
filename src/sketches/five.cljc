@@ -40,17 +40,16 @@
    lower))
 
 (defn point-on-arc [point radius degrees]
-  (let [[x y] [(:x point) (:y point)]]
-    (->Point (->> degrees
-                  (to-radians)
-                  (cos)
-                  (* radius)
-                  (+ x))
-             (->> degrees
-                  (to-radians)
-                  (sin)
-                  (* radius)
-                  (+ y)))))
+  (->Point (->> degrees
+                (to-radians)
+                (cos)
+                (* radius)
+                (+ (:x point)))
+           (->> degrees
+                (to-radians)
+                (sin)
+                (* radius)
+                (+ (:y point)))))
 
 (defn random-point-on-arc [origin-point angle-bounds radius]
   (let [degrees (random-angle angle-bounds)]
